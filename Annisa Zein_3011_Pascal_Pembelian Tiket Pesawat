@@ -1,0 +1,96 @@
+program Pembelian_Tiket_Pesawat;
+
+var
+  Nama,Umur, Jenis_kelamin, Tujuan, Jenis_Maskapai: String;
+  kursi: Integer;
+  harga, total, diskon: real;
+
+begin
+  writeln('____________________________________');
+  writeln('       Pembelian Tiket Pesawat');
+  writeln('____________________________________');
+  writeln();
+  write('Nama          : ');
+  readln(Nama);
+  write('Umur          : ');
+  readln(Umur);
+  write('Jenis Kelamin : ');
+  readln(Jenis_kelamin);
+  writeln('____________________________________');
+  writeln();
+ 
+  write('Kota Tujuan [Semarang/Bali/Jakarta] : ');
+  readln(Tujuan);
+  Writeln();
+  write('Jenis Maskapai [Economy/Business/First class] : ');
+  readln(Jenis_Maskapai);
+
+  // Mengatur harga tiket berdasarkan tujuan dan jenis maskapai
+  if (Tujuan = 'Semarang') then
+  begin
+    if (Jenis_Maskapai = 'Economy') then
+      harga := 1530000
+    else if (Jenis_Maskapai = 'Business') then
+      harga := 7951000
+    else if (Jenis_Maskapai = 'First class') then
+      harga := 15500000;
+  end
+  else if (Tujuan = 'Bali') then
+  begin
+    if (Jenis_Maskapai = 'Economy') then
+      harga := 1623000
+    else if (Jenis_Maskapai = 'Business') then
+      harga := 11055800
+    else if (Jenis_Maskapai = 'First class') then
+      harga := 16700000;
+  end
+  else if (Tujuan = 'Jakarta') then
+  begin
+    if (Jenis_Maskapai = 'Economy') then
+      harga := 936000
+    else if (Jenis_Maskapai = 'Business') then
+      harga := 4495000
+    else if (Jenis_Maskapai = 'First class') then
+      harga := 9450000
+    else
+    begin
+      writeln('Masukkan tujuan yang sesuai');
+      Exit; // Keluar dari program jika jenis maskapai tidak valid
+    end;
+  end
+  else
+  begin
+    writeln('Masukkan tujuan yang sesuai');
+    Exit; // Keluar dari program jika tujuan tidak valid
+  end;
+
+  // Meminta input jumlah kursi yang dipesan  
+  writeln();
+  write('Anda ingin berapa kursi? : ');
+  readln(kursi);
+
+  // Mengatur diskon berdasarkan jumlah kursi yang dibeli
+  if (kursi > 3) then
+    diskon := 0.25
+  else
+    diskon := 0; // Jika kursi kurang dari atau sama dengan 3, diskon tidak diberikan
+
+  // Menghitung total harga tiket
+  total := (1 - diskon) * kursi * harga;
+
+  // Menampilkan struk pemesanan
+  writeln('____________________________________');
+  writeln('           Struk Pemesanan');
+  writeln('____________________________________');
+  writeln('Nama            : ', Nama);
+  writeln('Umur            : ', Umur);
+  writeln('Jenis Kelamin   : ', Jenis_kelamin);
+  writeln('Tujuan          : ', Tujuan);
+  writeln('Jenis Maskapai  : ', Jenis_Maskapai);
+  writeln('Jumlah Kursi    : ', kursi);
+  writeln('Harga Tiket     : ', harga:0:2);
+  writeln('Diskon          : ', diskon * 100:0:2, '%');
+  writeln('Total Pembayaran: ', total:0:2);
+  writeln('____________________________________');
+end.
+
