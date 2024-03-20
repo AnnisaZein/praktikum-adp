@@ -1,0 +1,82 @@
+# Mengatur harga tiket berdasarkan tujuan dan jenis maskapai
+def hitung_harga_tiket(tujuan, jenis_maskapai):
+    if tujuan == 'Semarang':
+        if jenis_maskapai == 'Economy':
+            return 1530000
+        elif jenis_maskapai == 'Business':
+            return 7951000
+        elif jenis_maskapai == 'First class':
+            return 15500000
+    elif tujuan == 'Bali':
+        if jenis_maskapai == 'Economy':
+            return 1623000
+        elif jenis_maskapai == 'Business':
+            return 8863000
+        elif jenis_maskapai == 'First class':
+            return 16700000
+    elif tujuan == 'Jakarta':
+        if jenis_maskapai == 'Economy':
+            return 936000
+        elif jenis_maskapai == 'Business':
+            return 4495000
+        elif jenis_maskapai == 'First class':
+            return 9450000
+    return None
+
+# Meminta input jumlah kursi yang dipesan
+def input_kursi():
+    while True:
+        try:
+            kursi = int(input('Anda ingin berapa kursi? : '))
+            if kursi <= 0:
+                print("Masukkan jumlah kursi yang valid (lebih dari 0)")
+                continue
+            return kursi
+        except ValueError:
+            print("Masukkan angka yang valid")
+
+print('____________________________________')
+print('       Pembelian Tiket Pesawat')
+print('____________________________________')
+print()
+
+Nama = input('Nama          : ')
+Umur = input('Umur          : ')
+Jenis_kelamin = input('Jenis Kelamin : ')
+print('____________________________________')
+
+print()
+Tujuan = input('Kota Tujuan [Semarang/Bali/Jakarta] : ')
+print()
+Jenis_Maskapai = input('Jenis Maskapai [Economy/Business/First class] : ')
+
+# Mengatur harga tiket
+harga = hitung_harga_tiket(Tujuan, Jenis_Maskapai)
+if harga is None:
+    print('Masukkan tujuan dan jenis maskapai yang sesuai')
+    exit()
+
+# Meminta input jumlah kursi
+print()
+kursi = input_kursi()
+
+# Mengatur diskon
+diskon = 0.25 if kursi > 3 else 0
+
+# Menghitung total harga tiket
+total = (1 - diskon) * kursi * harga
+
+# Menampilkan struk pemesanan
+print('____________________________________')
+print('           Struk Pemesanan')
+print('____________________________________')
+print('Nama            :', Nama)
+print('Umur            :', Umur)
+print('Jenis Kelamin   :', Jenis_kelamin)
+print('Tujuan          :', Tujuan)
+print('Jenis Maskapai  :', Jenis_Maskapai)
+print('Jumlah Kursi    :', kursi)
+print('Harga Tiket     :', '{:,.2f}'.format(harga))
+print('Diskon          :', '{:.2f}'.format(diskon * 100), '%')
+print('Total Pembayaran:', '{:,.2f}'.format(total))
+print('____________________________________')
