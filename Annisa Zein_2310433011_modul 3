@@ -1,0 +1,50 @@
+program AlphabetPyramid;
+
+// Deklarasi variabel
+var
+  numLetters: integer;
+
+// Fungsi untuk mencari nilai minimum antara dua bilangan
+function Minimum(a, b: integer): integer;
+begin
+  if a < b then
+    Minimum := a
+  else
+    Minimum := b;
+end;
+
+// Prosedur untuk mencetak piramida alfabet
+procedure PrintAlphabetPyramid(num: integer);
+var
+  i, j, k: integer;
+begin
+  // Deklarasi variabel lokal
+  // Loop untuk setiap baris pada piramida
+  for i := 1 to num do
+  begin
+    // Mencetak spasi sebelum huruf
+    for j := 1 to num - i do
+      write(' ');
+
+    // Mencetak huruf alfabet dari 'A' hingga huruf yang sesuai dengan baris saat ini
+    for j := 1 to i do
+      write(chr(64 + j));
+
+    // Mencetak huruf alfabet dalam urutan terbalik, kecuali untuk baris terakhir
+    for k := i - 1 downto 1 do
+      write(chr(64 + k));
+
+    // Pindah ke baris berikutnya
+    WriteLn();
+  end;
+end;
+
+begin
+  // Meminta input dari pengguna
+  write('Masukkan jumlah huruf pada piramida (1-26): ');
+  readln(numLetters);
+  numLetters := Minimum(numLetters, 26);  // Memastikan jumlah huruf dalam rentang yang valid
+  
+  // Memanggil prosedur untuk mencetak piramida alfabet
+  PrintAlphabetPyramid(numLetters);
+end.
