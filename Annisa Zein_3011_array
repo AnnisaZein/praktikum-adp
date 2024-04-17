@@ -1,0 +1,44 @@
+print("|| Program menginput 2 buah array ||")
+print("====================================")
+print()
+def input_array():
+    try:
+        array = input("Masukan array (angka 0-9 dipisah oleh spasi): ").split()
+        array = [int(i) for i in array]
+        for i in array:
+            if not (0 <= i <= 9):
+                print("Masukan angka antara 0 sampai 9")
+                return input_array()
+        return array
+    except ValueError:
+        print("Masukan angka yang sesuai")
+        return input_array()
+
+def main():
+    print("Masukan array pertama:")
+    array1 = input_array()
+    print()
+    print("Masukan array kedua: ")
+    array2 = input_array()
+    print()
+
+    hanya_array1 = []
+    hanya_array2 = []
+    kedua_array = []
+
+    for i in array1:
+        if i not in array2:
+            hanya_array1.append(i) 
+        else:
+            kedua_array.append(i)
+
+    for i in array2:
+        if i not in array1 :
+            hanya_array2.append(i)
+
+    print("Elemen yang hanya ada di array pertama :", hanya_array1)
+    print("Elemen yang hanya ada di array kedua   :", hanya_array2)
+    print("Elemen yang ada di kedua array         :", kedua_array)
+
+if _name_ == "_main_":
+    main()
