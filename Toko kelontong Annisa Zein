@@ -1,0 +1,48 @@
+print("-----------DAFTAR BARANG, HARGA, STOK TOKO------------")
+print()
+print("======================================================")
+print("|     Nama Barang        |     Harga   |     Stok    |")
+print("======================================================")
+
+dagangan = [
+    ["Mie instan", 4000, 60],
+    ["Minyak goreng", 28000, 20],
+    ["Telur", 2500, 60],
+    ["Sabun Mandi", 3500, 40],
+    ["Pasta gigi", 14000, 20],
+    ["Shampo", 1000, 48],
+    ["Tepung", 13000, 10],
+    ["Gula pasir", 17000, 10],
+    ["Teh", 6000, 10],
+    ["Kopi", 3000, 10],
+]
+
+for barang in dagangan:
+    print(f"|     {barang[0]:<16}   |   {barang[1]:<10}|     {barang[2]:<5}   |")
+    
+print("======================================================")
+
+keuntungan_terbesar = 0
+keuntungan_terkecil = dagangan[0][1] * dagangan[0][2]
+barang_terlaris = ""
+barang_terendah = ""
+total_keuntungan = 0
+
+for barang in dagangan:
+    keuntungan = barang[1] * barang[2]
+    total_keuntungan += keuntungan
+    if keuntungan > keuntungan_terbesar:
+        keuntungan_terbesar = keuntungan
+        barang_terlaris = barang[0]
+    if keuntungan < keuntungan_terkecil:
+        keuntungan_terkecil = keuntungan
+        barang_terendah = barang[0]
+        
+print()
+print("----------KEUNTUNGAN TERBESAR DAN TERKECIL-----------")
+print(f"\n -Barang dengan keuntungan terbesar: {barang_terlaris}")
+print()
+print(f" -Barang dengan keuntungan terkecil: {barang_terendah}")
+print()
+print(f" -Total keuntungan: {total_keuntungan}")
+print()
