@@ -1,0 +1,27 @@
+def hitung_kecepatan_akhir_dan_jarak(v0, a, t):
+    v = v0 + (a * t)
+    s = v0 * t + 0.5 * a * t**2
+    return v, s
+
+# Input jumlah data yang ingin dimasukkan
+x  = int(input("Masukkan jumlah data yang ingin dihitung: "))
+
+y  = []
+
+# Memasukkan input di luar tabel
+for i in range(x):
+    print(f"Data ke-{i+1}:")
+    v0 = float(input("Masukkan kecepatan awal (v0): "))
+    a = float(input("Masukkan percepatan (a): "))
+    t = float(input("Masukkan waktu (t): "))
+    y.append((a, t, v0))
+
+# Output dalam bentuk tabel
+print("==============================================================================")
+print("| No. |  Kecepatan Awal  | Percepatan | Waktu | Kecepatan Akhir |   Jarak    |")
+print("==============================================================================")
+for i in range(x):
+    a, t, v0 = y[i]
+    v, s = hitung_kecepatan_akhir_dan_jarak(v0, a, t)
+    print(f"| {i+1:^3} | {v0:^16.2f} |{a:^11.2f} | {t:^6.2f} | {v:^15.2f} | {s:^9.2f} |")
+print("==============================================================================")
