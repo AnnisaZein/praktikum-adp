@@ -25,7 +25,7 @@ def tampilkan_semua_keuangan():
     if data_keuangan:
         headers = ["Tanggal", "Deskripsi", "Jumlah", "Tipe"]
         print(f"|{headers[0]:<15} | {headers[1]:<30} | {headers[2]:<10} | {headers[3]:<15} |")
-        print("="*70)
+        print("="*83)
         print()
         for data in data_keuangan:
             tanggal, deskripsi, jumlah, tipe = data.strip().split(",")
