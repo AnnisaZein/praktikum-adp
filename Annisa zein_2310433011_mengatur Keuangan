@@ -1,0 +1,61 @@
+# Mencetak judul
+print("------Selamat Datang Di Program Keuangan------")
+print("       Kami Akan Mengatur Keuangan Anda       ")
+
+#Fungsi untuk menyimpan data keuangan
+def simpan_keuangan(tanggal, deskripsi, jumlah, tipe):
+    with open("database_keuangan.txt", "a") as file:
+        file.write(f"{tanggal},{deskripsi},{jumlah},{tipe}\n")
+    print("Data keuangan berhasil disimpan.")
+
+# Fungsi untuk menghapus data keuangan berdasarkan tanggal
+def hapus_keuangan(tanggal):
+    with open("database_keuangan.txt", "r") as file:
+        lines = file.readlines()
+    with open("database_keuangan.txt", "w") as file:
+        for line in lines:
+            if line.split(",")[0] != tanggal:
+                file.write(line)
+    print("Data keuangan berhasil dihapus.")
+
+# Fungsi untuk menampilkan seluruh data keuangan dalam bentuk tabel
+def tampilkan_semua_keuangan():
+    with open("database_keuangan.txt", "r") as file:
+        data_keuangan = file.readlines()
+    if data_keuangan:
+        headers = ["Tanggal", "Deskripsi", "Jumlah", "Tipe"]
+        print(f"{headers[0]:<15} {headers[1]:<30} {headers[2]:<10} {headers[3]:<15}")
+        print("="*70)
+        print()
+        for data in data_keuangan:
+            tanggal, deskripsi, jumlah, tipe = data.strip().split(",")
+            print(f"| {tanggal:<15} | {deskripsi:<30} | {jumlah:<10} | {tipe:<15} |")
+    else:
+        print("Database keuangan kosong.")
+
+# Main program
+while True:
+    print("\nMenu:")
+    print("1. Simpan Data Keuangan")
+    print("2. Hapus Data Keuangan")
+    print("3. Tampilkan Data Keuangan")
+    print("4. Keluar")
+
+    pilihan = input("Pilih menu (1/2/3/4/5): ")
+
+    if pilihan == "1":
+        tanggal = input("Masukkan tanggal (format: DD-MM-YYYY): ")
+        deskripsi = input("Masukkan deskripsi: ")
+        jumlah = input("Masukkan jumlah: ")
+        tipe = input("Masukkan tipe (pemasukan/pengeluaran): ")
+        simpan_keuangan(tanggal, deskripsi, jumlah, tipe)
+    elif pilihan == "2":
+        tanggal = input("Masukkan tanggal yang akan dihapus: ")
+        hapus_keuangan(tanggal)
+    elif pilihan == "3":
+        tampilkan_semua_keuangan()
+    elif pilihan == "4":
+        print("Terima kasih telah menggunakan program ini.")
+        break
+    else:
+        print("Pilihan tidak valid. Silakan pilih menu yang tersedia.")
