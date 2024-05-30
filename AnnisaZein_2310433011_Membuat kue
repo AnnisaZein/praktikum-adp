@@ -1,0 +1,71 @@
+import os
+from termcolor import colored, cprint
+
+os.system("cls")
+
+def kue():
+    api=("           *     *     *")
+    print(" "*3, end=" ")
+    cprint(api, "yellow") 
+    lilin =("           |     |     |")
+    print(" "*3, end=" ")  
+    cprint(lilin, "red") 
+
+# Bagian tingkat 1
+
+    # lapisan 1
+    print(" "*11, end=" ")
+    hiasan = ("\_/\_/\_/\_/\_/\_/")  
+    cprint(hiasan.center(6), "black", "on_white")
+
+    # lapisan 2
+    print(" "*11, end=" ")
+    hiasan = ("-"*18)  
+    cprint(hiasan.center(6), "blue", "on_white")
+    
+    # lapisan 3
+    print(" "*11, end=" ")
+    bawah1=("█"*18)
+    cprint(bawah1, "white")
+
+
+# Bagian tingkat 2
+
+    # lapisan 1
+    print(" "*6, end=" ")
+    hiasan = ("\_/\_/\_/\_/\_/\_/\_/\_/\_/")  
+    cprint(hiasan.center(27), "black", "on_white")
+ 
+    # lapisan 2
+    ucapan = ("HAPPY BIRTHDAY")  
+    print(" "*6, end=" ")
+    cprint(ucapan.center(27), "black", "on_light_blue")
+    
+    # lapisan 3
+    print(" "*6, end=" ")
+    bawah2=("█"*27)
+    cprint(bawah2, "white")
+    
+# Bagian tingkat 3
+
+    # lapisan 1
+    print(" "*3, end=" ")
+    hiasan = ("\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/")  
+    cprint(hiasan.center(33), "black", "on_white")
+    
+    # lapisan 2
+    print(" "*3, end=" ")
+    hiasan = ("-"*33)  
+    cprint(hiasan.center(33), "blue", "on_white")
+
+    # lapisan 3
+    print(" "*3, end=" ")
+    bawah3=("█"*33)
+    cprint(bawah3, "white")
+
+# Alas kue
+    print(" "*2, end=" ")
+    cprint("="*35, "dark_grey", "on_black")
+
+# Panggil fungsi kue untuk menampilkan hasilnya
+kue()
